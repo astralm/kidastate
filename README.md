@@ -8,6 +8,7 @@
 ---
 Команда для запуска локального сервера для разрабоки: 
 * ```webpack-dev-server```
+
 Для успешного запуска иногда необходимо установить глобально webpack-dev-server и webpack:
 * ```npm i -g webpack-dev-server webpack```
 ---
