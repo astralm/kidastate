@@ -9,6 +9,9 @@
 Команда для запуска локального сервера для разрабоки: 
 * ```webpack-dev-server```
 
+Для ручного определения хоста необходимо добвить --host <HOST>
+* ```webpack-dev-server --host 185.22.61.149``` 
+
 Для успешного запуска иногда необходимо установить глобально webpack-dev-server и webpack:
 * ```npm i -g webpack-dev-server webpack```
 ---
