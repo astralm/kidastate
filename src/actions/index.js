@@ -21,3 +21,9 @@ export function changeColorOption(colorOption) {
 export function changeTheme(themeOption) {
   return { type: types.CHANGE_THEME, theme: themeOption };
 }
+export function signIn(user) {
+	return { type: types.SIGN_IN, user };
+}
+export function updateState(state) {
+	return { type: types.UPDATE_STATE, state };
+} 

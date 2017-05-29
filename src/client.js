@@ -9,13 +9,26 @@ import { updateUser } from './actions';
 import { fromJS, Map } from 'immutable';
 import appMiddleware from './middleware.js';
 import * as Phoenix from 'phoenix';
+import initMiddlewareEvents from './middleware_events/index.js';
+import { signIn, updateState } from 'actions/index.js';
 
-const channel = {};
+const socket = new Phoenix.Socket("wss://apiteam.ru/socket/websocket/websocket", { params: { token: "123" } });
+socket.connect();
+const channel = socket.channel('iodb', {});
+channel.join().receive("ok", data => {
+}).receive("error", data => {
+  console.error(data);
+});
+initMiddlewareEvents(channel, "qwe");
 const middleware = routerMiddleware(hashHistory);
 const store = createStore(
   reducers,
   applyMiddleware(middleware, appMiddleware(channel))
 );
+
+if(localStorage.state)
+  store.dispatch(updateState(localStorage.state));
+
 const history = syncHistoryWithStore(hashHistory, store);
 
 function scrollToTop() {
