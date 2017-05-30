@@ -49,6 +49,7 @@
   }
   .nav-text {
     display: inline;
+    margin: 12px 0;
   }
   .icon-has-ul {
     display: inherit;
@@ -62,7 +63,8 @@
   .nav > li {
     // 1st level ul
     > a {
-      padding: 10px 16px !important;
+      padding: 20px 16px !important;
+      //padding: 10px 16px !important;
       text-align: left !important;
       .nav-icon {
         transition: padding .35s $l_transition_ease_out,
@@ -104,6 +106,7 @@
 @mixin normalSidebarFooter() {
   .nav-text {
     display: inline;
+
   }
   .nav > li {
     > a {
