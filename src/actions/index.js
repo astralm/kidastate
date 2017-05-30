@@ -21,9 +21,12 @@ export function changeColorOption(colorOption) {
 export function changeTheme(themeOption) {
   return { type: types.CHANGE_THEME, theme: themeOption };
 }
-export function signIn(user) {
-	return { type: types.SIGN_IN, user };
+export function login(email, password) {
+	return { type: types.LOGIN, email, password };
+}
+export function updateUser(user){
+	return { type: types.UPDATE_USER, user };
 }
 export function updateState(state) {
 	return { type: types.UPDATE_STATE, state };
-} 
+}

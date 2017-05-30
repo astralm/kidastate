@@ -10,7 +10,7 @@ import { fromJS, Map } from 'immutable';
 import appMiddleware from './middleware.js';
 import * as Phoenix from 'phoenix';
 import initMiddlewareEvents from './middleware_events/index.js';
-import { signIn, updateState } from 'actions/index.js';
+import { login, updateState } from 'actions/index.js';
 
 const socket = new Phoenix.Socket("wss://apiteam.ru/socket/websocket/websocket", { params: { token: "123" } });
 socket.connect();
@@ -19,12 +19,16 @@ channel.join().receive("ok", data => {
 }).receive("error", data => {
   console.error(data);
 });
-initMiddlewareEvents(channel, "qwe");
+initMiddlewareEvents(channel, "qw6ads562-1");
 const middleware = routerMiddleware(hashHistory);
 const store = createStore(
   reducers,
   applyMiddleware(middleware, appMiddleware(channel))
 );
+
+store.subscribe(() => {
+  localStorage.setItem('state', JSON.stringify(store.getState().app.toJS()));
+});
 
 if(localStorage.state)
   store.dispatch(updateState(localStorage.state));
@@ -46,9 +50,7 @@ const rootRoute = {
       require('./routes/500'),
       require('./routes/confirmEmail'),
       require('./routes/forgotPassword'),
-      require('./routes/lockScreen'),
       require('./routes/login'),
-      require('./routes/signUp'),
       require('./routes/fullscreen'),
       {
         path: '*',

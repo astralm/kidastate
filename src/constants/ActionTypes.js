@@ -5,5 +5,6 @@ export const TOGGLE_FIXED_HEADER = 'TOGGLE_FIXED_HEADER';
 export const CHANGE_SIDEBAR_WIDTH = 'CHANGE_SIDEBAR_WIDTH';
 export const CHANGE_COLOR_OPTION = 'CHANGE_COLOR_OPTION';
 export const CHANGE_THEME = 'CHANGE_THEME';
-export const SIGN_IN = 'SIGN_IN';
 export const UPDATE_STATE = 'UPDATE_STATE';
+export const LOGIN = 'LOGIN';
+export const UPDATE_USER = 'UPDATE_USER';

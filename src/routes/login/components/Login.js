@@ -3,15 +3,36 @@ import APPCONFIG from 'constants/Config';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import QueueAnim from 'rc-queue-anim';
+import { connect } from 'react-redux';
+import { login } from '../../../actions';
 
 class Login extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      brand: APPCONFIG.brand
+      brand: APPCONFIG.brand,
+      email: props.email || "",
+      password: props.password || ""
     };
+    this.login = this.login.bind(this);
+    this.inputEmail = this.inputEmail.bind(this);
+    this.inputPassword = this.inputPassword.bind(this);
+    if(window.location.hash != "#/login")
+      window.location.hash = "#/login";
   }
-
+  login(){
+    this.props.login(this.state.email, this.state.password);
+  }
+  inputEmail(event){
+    this.setState({
+      email: event.target.value
+    });
+  }
+  inputPassword(event){
+    this.setState({
+      password: event.target.value
+    });
+  }
   render() {
     return (
       <div className="body-inner">
@@ -28,6 +49,7 @@ class Login extends React.Component {
                   <TextField
                     floatingLabelText="Email"
                     fullWidth
+                    onInput = {this.inputEmail}
                   />
                 </div>
                 <div className="form-group">
@@ -35,13 +57,14 @@ class Login extends React.Component {
                     floatingLabelText="Password"
                     type="password"
                     fullWidth
+                    onInput = {this.inputPassword}
                     />
                 </div>
               </fieldset>
             </form>
           </div>
           <div className="card-action no-border text-right">
-            <a href="#/" className="color-primary">Login</a>
+            <a href="#/" className="color-primary" onClick = { this.login }>Login</a>
           </div>
         </div>
 
@@ -56,12 +79,14 @@ class Login extends React.Component {
   }
 }
 
+const LoginContainer = connect(null, {login})(Login);
+
 const Page = () => (
   <div className="page-login">
     <div className="main-body">
       <QueueAnim type="bottom" className="ui-animate">
         <div key="1">
-          <Login />
+          <LoginContainer />
         </div>
       </QueueAnim>
     </div>
