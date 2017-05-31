@@ -61,12 +61,13 @@ class VerticalLinearStepper extends React.Component {
 
     return (
       <article className="article">
-        <h2 className="article-title">Vertical linear stepper</h2>
         <div className="box box-default">
           <div className="box-body padding-xl">
 
-            <div style={{maxWidth: 380, height: 400, margin: 'auto'}}>
-              <Stepper activeStep={stepIndex} orientation="vertical">
+            {/*<div style={{maxWidth: 380, height: 400, margin: 'auto'}}>*/}
+            <div>
+              <Stepper activeStep={stepIndex} orientation="vertical" style={{display:'flex',flexDirection: 'row',
+                  justifyContent: 'flex-end'}}>
                 <Step>
                   <StepLabel>Select campaign settings</StepLabel>
                   <StepContent>
@@ -98,26 +99,9 @@ class VerticalLinearStepper extends React.Component {
                   </StepContent>
                 </Step>
               </Stepper>
-              {finished && (
-                <p style={{margin: '20px 0', textAlign: 'center'}}>
-                  <a
-                    href="javascript:;"
-                    onClick={(event) => {
-                      event.preventDefault();
-                      this.setState({stepIndex: 0, finished: false});
-                    }}
-                    >
-                      Click here
-                    </a> to reset the example.
-                </p>
-              )}
+
             </div>
-            <div style={{maxWidth: 380, margin: 'auto'}}>
-              <div className="divider divider-xl" />
-              <div className="callout callout-info">
-                <p>Vertical steppers are designed for narrow screen sizes. They are ideal for mobile.</p>
-              </div>
-            </div>
+
           </div>
         </div>
       </article>

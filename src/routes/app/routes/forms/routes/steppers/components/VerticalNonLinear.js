@@ -7,10 +7,15 @@ import {
 } from 'material-ui/Stepper';
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
+import TextField from 'material-ui/TextField';
+import Checkbox from 'material-ui/Checkbox';
 
-/**
- * A basic vertical non-linear implementation
- */
+const styles = {
+    checkbox: {
+        maxWidth: 250
+
+    }
+};
 class VerticalNonLinear extends React.Component {
 
   state = {
@@ -55,45 +60,91 @@ class VerticalNonLinear extends React.Component {
   }
 
   render() {
-    const {stepIndex} = this.state;
+    const {stepIndex} = this.props;
 
     return (
       <article className="article">
-        <h2 className="article-title">Vertical non-linear stepper</h2>
         <div className="box box-default">
-          <div className="box-body padding-xl">
-
-            <div style={{maxWidth: 380, height: 400, margin: 'auto'}}>
+          <div className="box-body ">
+            <div>
+            {/*<div style={{maxWidth: 380, height: 400, margin: 'auto'}}>*/}
               <Stepper
                 activeStep={stepIndex}
                 linear={false}
                 orientation="vertical"
-                            >
+              >
                 <Step>
-                  <StepButton onClick={() => this.setState({stepIndex: 0})}>
-                    Select campaign settings
+                  <StepButton >
+                    Контактная информация
                   </StepButton>
                   <StepContent>
-                    <p>
-                      For each ad campaign that you create, you can control how much
-                      you're willing to spend on clicks and conversions, which networks
-                      and geographical locations you want your ads to show on, and more.
-                    </p>
-                    {this.renderStepActions(0)}
+
+                      <TextField
+                          hintText="ФИО"
+                          floatingLabelText="Введите ФИО"
+                      /> <br/>
+                      <TextField
+                          hintText="Должность"
+                          floatingLabelText="Введите должность"
+                      /> <br/>
+                      <TextField
+                          hintText="Телефон"
+                          floatingLabelText="Введите телефон"
+                      />
+                      <br/>
+                      <TextField
+                          hintText="Почта"
+                          floatingLabelText="Введите email"
+                      />
+                      <br/>
+                      <TextField
+                          hintText="Отдел"
+                          floatingLabelText="Отдел"
+                      />
+
+
                   </StepContent>
                 </Step>
                 <Step>
-                  <StepButton onClick={() => this.setState({stepIndex: 1})}>
-                    Create an ad group
+                  <StepButton >
+                    Рабочее время и зарплата
                   </StepButton>
                   <StepContent>
-                    <p>An ad group contains one or more ads which target a shared set of keywords.</p>
-                    {this.renderStepActions(1)}
+                     <p><b>Указать дни недели рабочие + часы работы в эти дни : </b></p>
+                    <Checkbox
+                      label="ПНД"
+                      style={styles.checkbox}
+                  /><br/>
+                    <Checkbox
+                        label="ВТ"
+                        style={styles.checkbox}
+                    /><br/>
+                    <Checkbox
+                        label="СР"
+                        style={styles.checkbox}
+                    /><br/>
+                    <Checkbox
+                        label="ЧТ"
+                        style={styles.checkbox}
+                    /><br/>
+                    <Checkbox
+                        label="ПТ"
+                        style={styles.checkbox}
+                    /><br/>
+                    <Checkbox
+                        label="СБ"
+                        style={styles.checkbox}
+                    /><br/>
+                    <Checkbox
+                        label="ВС"
+                        style={styles.checkbox}
+                    /><br/>
+
                   </StepContent>
                 </Step>
                 <Step>
-                  <StepButton onClick={() => this.setState({stepIndex: 2})}>
-                    Create an ad
+                  <StepButton >
+                    Дополнительная ставка
                   </StepButton>
                   <StepContent>
                     <p>
@@ -102,18 +153,13 @@ class VerticalNonLinear extends React.Component {
                     If you run into any problems with your ads, find out how to tell if
                     they're running and how to resolve approval issues.
                   </p>
-                    {this.renderStepActions(2)}
+
                   </StepContent>
                 </Step>
               </Stepper>
             </div>
 
-            <div style={{maxWidth: 380, margin: 'auto'}}>
-              <div className="divider divider-xl" />
-              <div className="callout callout-info">
-                <p>A basic vertical non-linear implementation</p>
-              </div>
-            </div>
+
           </div>
         </div>
       </article>
