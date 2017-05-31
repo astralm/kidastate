@@ -10,8 +10,19 @@ import { fromJS, Map } from 'immutable';
 import appMiddleware from './middleware.js';
 import * as Phoenix from 'phoenix';
 import initMiddlewareEvents from './middleware_events/index.js';
-import { login, updateState } from 'actions/index.js';
+import { updateUser, updateState } from 'actions/index.js';
 
+
+const mobile_hash = (() => {
+  let result = [];
+  for(let k = 0; k < 32; k++)
+    result.push(
+      Math.ceil(Math.random() * 2) == 2 ?
+        (Math.random() * 0xf).toString(16)[0].toUpperCase() :
+        (Math.random() * 0xf).toString(16)[0].toLowerCase()
+    );
+  return result.join('');
+})();
 const socket = new Phoenix.Socket("wss://apiteam.ru/socket/websocket/websocket", { params: { token: "123" } });
 socket.connect();
 const channel = socket.channel('iodb', {});
@@ -19,7 +30,7 @@ channel.join().receive("ok", data => {
 }).receive("error", data => {
   console.error(data);
 });
-initMiddlewareEvents(channel, "qw6ads562-1");
+initMiddlewareEvents(channel, mobile_hash);
 const middleware = routerMiddleware(hashHistory);
 const store = createStore(
   reducers,
