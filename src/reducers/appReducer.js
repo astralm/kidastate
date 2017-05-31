@@ -20,6 +20,10 @@ const AppReducer = (state = Map(), action) => {
 					}))
 				) : 
 				state;
+		case types.LOGOUT :
+			return state.set('user', state.get('user') ? 
+				state.get('user').set('status', false) : 
+				fromJS({status: false}));
 		case types.UPDATE_USER :
 			return action.user ? 
 				state.set('user', state.get('user') ? 

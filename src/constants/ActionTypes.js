@@ -7,4 +7,5 @@ export const CHANGE_COLOR_OPTION = 'CHANGE_COLOR_OPTION';
 export const CHANGE_THEME = 'CHANGE_THEME';
 export const UPDATE_STATE = 'UPDATE_STATE';
 export const LOGIN = 'LOGIN';
+export const LOGOUT = 'LOGOUT';
 export const UPDATE_USER = 'UPDATE_USER';

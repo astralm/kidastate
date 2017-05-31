@@ -24,6 +24,9 @@ export function changeTheme(themeOption) {
 export function login(email, password) {
 	return { type: types.LOGIN, email, password };
 }
+export function logout(){
+  return { type: types.LOGOUT };
+}
 export function updateUser(user){
 	return { type: types.UPDATE_USER, user };
 }
