@@ -1,9 +1,12 @@
-import pg_validate_mail from './events/pg_validate_mail.js';
+import * as types from '../constants/ActionTypes.js';
+import login from './events/login.js';
 
-const initEventListeners = (channel, hash) => {
-	console.log(hash);
-	channel.on(hash, data => {
-		pg_validate_mail(data);
+const initEventListeners = (channel, mobile_hash, store) => {
+	channel.on(mobile_hash, data => {
+		switch(data.uxui){
+			case types.LOGIN :
+				login(store, data.result);
+		}
 	});
 }
 

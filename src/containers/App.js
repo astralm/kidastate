@@ -4,6 +4,7 @@ import classnames from 'classnames';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import Login from '../routes/login/components/Login.js';
 
 // = styles =
 // 3rd
@@ -54,7 +55,7 @@ class App extends Component {
               'sidebar-sm': sidebarWidth === 'small',
               'sidebar-lg': sidebarWidth === 'large'})
                     }>
-            {this.props.children}
+            {this.props.userStatus ? this.props.children : <Login/>}
           </div>
         </div>
       </MuiThemeProvider>
@@ -69,6 +70,7 @@ const mapStateToProps = (state, ownProps) => ({
   fixedHeader: state.settings.fixedHeader,
   sidebarWidth: state.settings.sidebarWidth,
   theme: state.settings.theme,
+  userStatus: state.app.getIn(['user', 'status']) || false
 });
 
 module.exports = connect(
