@@ -1,12 +1,13 @@
-import { UPDATE_FOO } from '../constants/ActionTypes.js';
-import { Map } from 'immutable';
+import { Map, fromJS } from 'immutable';
+import * as types from '../constants/ActionTypes.js';
 
 const AppReducer = (state = Map(), action) => {
 	switch(action.type){
-		case UPDATE_FOO:
-			return state.set('foo', action.foo);
-		case "UPDATE_BAR":
-			return state.set('bar', action.bar);
+		case types.UPDATE_STATE :
+			return state.merge(fromJS(JSON.parse(action.state)));
+		case types.SIGN_IN :
+			const user = state.get('user') ? state.get('user').merge(action.user) : undefined;
+			return user != undefined ? state.set('user', user) : state;
 		default: 
 			return state;
 	}

@@ -24,7 +24,7 @@ class SidebarContent extends React.Component {
     // AccordionNav
     const slideTime = 250;
     const $lists = $nav.find('ul').parent('li');
-    $lists.append('<i class="material-icons icon-has-ul">arrow_drop_down</i>');
+    $lists.append('<i class="material-icons icon-has-ul"></i>');
     const $As = $lists.children('a');
 
     // Disable A link that has ul
@@ -63,8 +63,11 @@ class SidebarContent extends React.Component {
     // HighlightActiveItems
     const $links = $nav.find('a');
     const currentLocation = hashHistory.getCurrentLocation();
+
     function highlightActive(pathname) {
       const path = `#${pathname}`;
+
+
 
       $links.each((i, link) => {
         const $link = $(link);
@@ -88,11 +91,78 @@ class SidebarContent extends React.Component {
 
 
   render() {
+      const FlatStyle = {
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+      };
+      const DisplayBlock = {
+          display:'block'
+      };
 
     return (
-      <ul className="nav" ref={(c) => { this.nav = c; }}>
-        
-      </ul>
+        <ul className="nav" ref={(c) => { this.nav = c; }}>
+          <li className="open">
+            <FlatButton href="#/app/menu">
+              <div style={FlatStyle}>
+                <i className="nav-icon material-icons">settings</i>
+                <span className="nav-text">Управленческий блок</span>
+              </div>
+            </FlatButton>
+            <ul style={DisplayBlock}>
+              <li>
+                <FlatButton className="prepend-icon" href="javascript:;">
+                  <span>Сотрудники</span>
+                </FlatButton>
+                <ul style={DisplayBlock}>
+                  <li><FlatButton href="javascript:;"><span>Структура компании</span></FlatButton></li>
+                  <li><FlatButton href="javascript:;"><span>Список всех сотрудников</span></FlatButton></li>
+                  <li><FlatButton href="javascript:;"><span>Создание нового сотрудника</span></FlatButton></li>
+                </ul>
+              </li>
+              <li>
+                <FlatButton className="prepend-icon" href="javascript:;">
+                  <span>Профили детей</span>
+                </FlatButton>
+                <ul style={DisplayBlock}>
+                  <li><FlatButton href="javascript:;"><span>Общий список всех детей</span></FlatButton></li>
+                  <li><FlatButton href="javascript:;"><span>Таблица маркеров</span></FlatButton></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+
+          <li className="open">
+            <FlatButton href="#/app/menu" >
+              <div style={FlatStyle}>
+                <i className="nav-icon material-icons">people
+                </i>
+                <span className="nav-text"> Административный блок</span>
+              </div>
+            </FlatButton>
+            <ul style={DisplayBlock}>
+              <li>
+                <FlatButton className="prepend-icon" href="javascript:;">
+                  <span>График отсутствия</span>
+                </FlatButton>
+                <ul style={DisplayBlock}>
+                  <li><FlatButton href="javascript:;"><span>Список детей</span></FlatButton></li>
+                  <li><FlatButton href="javascript:;"><span> Архив документов</span></FlatButton></li>
+                  <li><FlatButton href="javascript:;"><span> Архив Фотографий</span></FlatButton></li>
+                  <li><FlatButton href="javascript:;"><span> Архив Видео</span></FlatButton></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <FlatButton href="#/app/menu">
+              <div style={FlatStyle}>
+                <i className="nav-icon material-icons">sort</i>
+                <span className="nav-text">Диагностика</span>
+              </div>
+            </FlatButton>
+          </li>
+        </ul>
     );
   }
 }

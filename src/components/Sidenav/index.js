@@ -31,12 +31,12 @@ class Sidebar extends React.Component {
 
   render() {
     const { navCollapsed, colorOption } = this.props;
-    let toggleIcon = null;
-    if (navCollapsed) {
-      toggleIcon = <i className="material-icons">radio_button_unchecked</i>;
-    } else {
-      toggleIcon = <i className="material-icons">radio_button_checked</i>;
-    }
+    // let toggleIcon = null;
+    // if (navCollapsed) {
+    //   toggleIcon = <i className="material-icons">radio_button_unchecked</i>;
+    // } else {
+    //   toggleIcon = <i className="material-icons">radio_button_checked</i>;
+    // }
 
     return (
       <nav
@@ -54,9 +54,8 @@ class Sidebar extends React.Component {
             'bg-color-warning': ['15', '25', '35'].indexOf(colorOption) >= 0,
             'bg-color-danger': ['16', '26', '36'].indexOf(colorOption) >= 0 })}
                 >
-          <a href="javascript:;" className="collapsednav-toggler" onClick={this.onToggleCollapsedNav}>
-            {toggleIcon}
-          </a>
+            <Link to="/" className="brand">KidsState</Link>
+        {/*СВОРАЧИВАНИЕ*/}
         </section>
 
         <section className="sidebar-content">

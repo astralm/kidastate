@@ -17,6 +17,7 @@ class MainApp extends React.Component {
           <div className="app-content-wrapper">
             <div className="app-content">
               <div className="full-height">
+                {children}
               </div>
             </div>
 
