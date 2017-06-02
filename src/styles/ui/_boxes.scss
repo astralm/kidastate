@@ -3,7 +3,7 @@
   margin-bottom: 1.5rem;
   border: 0;
   border-radius: $border-radius;
-  box-shadow: 0 0 2px rgba(0,0,0,.15);
+
 
   &.box-transparent {
     box-shadow: none;
@@ -22,6 +22,7 @@
 .box-header,
 .box-heading {
   padding: $card-spacer-y $card-spacer-x;
+  padding-left:0;
   border-bottom: 1px solid transparent;
   border-radius: ($border-radius - 1) ($border-radius - 1) 0 0;
   font-weight: $headings-font-weight;
@@ -51,6 +52,7 @@
 .box-body {
   @include clearfix;
   padding: $card-spacer-x;
+  padding-left: 0;
 
   &.padding-lg {
     padding: 30px 15px;

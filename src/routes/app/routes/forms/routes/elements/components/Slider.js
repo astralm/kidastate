@@ -47,22 +47,18 @@ class SliderExampleControlled extends React.Component {
   render() {
     return (
       <div className="box box-default">
-        <div className="box-header">Controlled examples</div>
+        <div className="box-header">{this.props.title}</div>
         <div className="box-body">
           <Slider
-            min={0}
-            max={100}
-            step={1}
+            min={this.props.min}
+            max={this.props.max}
+            step={this.props.step}
             defaultValue={50}
             value={this.state.secondSlider}
             onChange={this.handleSecondSlider}
                     />
           <div className="callout callout-info no-margin-bottom">
-            <p>
-              <span>{'The value of this slider is: '}</span>
               <span>{this.state.secondSlider}</span>
-              <span>{' from a range of 0 to 100 inclusive'}</span>
-            </p>
           </div>
         </div>
       </div>
@@ -117,4 +113,4 @@ const SliderSection = () => (
   </article>
 );
 
-module.exports = SliderSection;
+module.exports = SliderExampleControlled;

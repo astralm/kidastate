@@ -46,19 +46,22 @@ class SelectFieldExampleNullable extends React.Component {
   handleChange = (event, index, value) => this.setState({value});
 
   render() {
+
     return (
-      <div className="col-lg-6">
+      <div className="col-lg-6" style={{padding:0}}>
         <div className="box box-transparent">
-          <div className="box-header">Nullable select</div>
+          <div className="box-header"></div>
           <div className="box-body">
             <SelectField
-              floatingLabelText="Ready?"
+              floatingLabelText={this.props.title}
               value={this.state.value}
-              onChange={this.handleChange}
-                        >
+              onChange={this.handleChange}>
               <MenuItem value={null} primaryText="" />
-              <MenuItem value={false} primaryText="No" />
-              <MenuItem value primaryText="Yes" />
+              {this.props.primarySts.map( (el, i) => <MenuItem key={i} value={el} primaryText={el} /> )}
+              {/*<MenuItem value={this.props.primarySt1} primaryText={this.props.primarySt1} />*/}
+              {/*<MenuItem value={this.props.primarySt2} primaryText={this.props.primarySt2} />*/}
+              {/*<MenuItem value={this.props.primarySt3} primaryText={this.props.primarySt3} />*/}
+              {/*<MenuItem value={this.props.primarySt4} primaryText={this.props.primarySt4} />*/}
             </SelectField>
           </div>
         </div>
@@ -152,4 +155,4 @@ const SelectFieldSection = () => (
   </article>
 );
 
-module.exports = SelectFieldSection;
+module.exports = SelectFieldExampleNullable;

@@ -3,10 +3,27 @@ import {
     Step,
     Stepper,
     StepButton,
+    StepContent,
 } from 'material-ui/Stepper';
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
+import TextField from 'material-ui/TextField';
+import Checkbox from 'material-ui/Checkbox';
 
+import SliderExampleControlled  from 'routes/app/routes/forms/routes/elements/components/Slider';
+import SelectFieldExampleNullable  from 'routes/app/routes/forms/routes/elements/components/SelectField';
+const styles = {
+    checkbox: {
+        maxWidth: 250
+    }
+};
+const styleHeight = {
+  heig : {
+    overflowY: 'scroll',
+    height:'580px',
+      paddingLeft: '10px'
+  }
+};
 /**
  * Non-linear steppers allow users to enter a multi-step flow at any point.
  *
@@ -15,6 +32,8 @@ import FlatButton from 'material-ui/FlatButton';
  *
  * We've used the `<StepButton>` here to demonstrate clickable step labels.
  */
+
+
 class HorizontalNonLinearStepper extends React.Component {
 
   state = {
@@ -35,68 +54,155 @@ class HorizontalNonLinearStepper extends React.Component {
     }
   };
 
+    _renderStep0() {
+        return (
+          <div style={styleHeight.heig}>
+              <TextField
+                  hintText="ФИО"
+                  floatingLabelText="Введите ФИО"
+              /> <br/>
+              <TextField
+                  hintText="Должность"
+                  floatingLabelText="Введите должность"
+              /> <br/>
+              <TextField
+                  hintText="Телефон"
+                  floatingLabelText="Введите телефон"
+              />
+              <br/>
+              <TextField
+                  hintText="Почта"
+                  floatingLabelText="Введите email"
+              />
+              <br/>
+              <TextField
+                  hintText="Отдел"
+                  floatingLabelText="Отдел"
+              />
+              <br/>
+
+          </div>
+        )
+    }
+    _renderStep1() {
+        return (
+            <div style={styleHeight.heig}>
+              <p><b>Указать дни недели рабочие + часы работы в эти дни : </b></p>
+              <Checkbox
+                  label="ПНД"
+                  style={styles.checkbox}
+              /><br/>
+              <Checkbox
+                  label="ВТ"
+                  style={styles.checkbox}
+              /><br/>
+              <Checkbox
+                  label="СР"
+                  style={styles.checkbox}
+              /><br/>
+              <Checkbox
+                  label="ЧТ"
+                  style={styles.checkbox}
+              /><br/>
+              <Checkbox
+                  label="ПТ"
+                  style={styles.checkbox}
+              /><br/>
+              <Checkbox
+                  label="СБ"
+                  style={styles.checkbox}
+              /><br/>
+              <Checkbox
+                  label="ВС"
+                  style={styles.checkbox}
+              />
+              <SliderExampleControlled title="Указать оклад" min={0} max={100000} step={100} />
+              <SliderExampleControlled title="Указать ставку в рублях за 1 час" min={10} max={1000} step={10}/>
+
+              <SelectFieldExampleNullable title="Ставка" primarySts={[18,20,36,40]}  />
+            </div>
+        )
+    }
+    _renderStep2() {
+        return (
+            <div style={styleHeight.heig}>
+              <SelectFieldExampleNullable title="Должность" primarySts={['Должность1','Должность2']} />
+              <p><b>Указать дни недели рабочие + часы работы в эти дни : </b></p>
+              <Checkbox
+                  label="ПНД"
+                  style={styles.checkbox}
+              /><br/>
+              <Checkbox
+                  label="ВТ"
+                  style={styles.checkbox}
+              /><br/>
+              <Checkbox
+                  label="СР"
+                  style={styles.checkbox}
+              /><br/>
+              <Checkbox
+                  label="ЧТ"
+                  style={styles.checkbox}
+              /><br/>
+              <Checkbox
+                  label="ПТ"
+                  style={styles.checkbox}
+              /><br/>
+              <Checkbox
+                  label="СБ"
+                  style={styles.checkbox}
+              /><br/>
+              <Checkbox
+                  label="ВС"
+                  style={styles.checkbox}
+              />
+              <SliderExampleControlled title="Указать оклад" min={0} max={100000} step={100} />
+              <SliderExampleControlled title="Указать ставку в рублях за 1 час" min={10} max={1000} step={10}/>
+
+            </div>
+        )
+    }
   getStepContent(stepIndex) {
     switch (stepIndex) {
       case 0:
-        return 'Select campaign settings...';
+          return this._renderStep0();
       case 1:
-        return 'What is an ad group anyways?';
+          return this._renderStep1();
       case 2:
-        return 'This is the bit I really care about!';
+          return this._renderStep2();
       default:
-        return 'You\'re a long way from home sonny jim!';
+          return '';
     }
   }
 
   render() {
-    const {stepIndex} = this.state;
+    const {stepIndex} = this.props;
     const contentStyle = {margin: '0 16px'};
 
     return (
       <article className="article">
-        <h2 className="article-title">Horizontal non-linear stepper</h2>
         <div className="box box-default">
           <div className="box-body padding-xl">
-
-            <div style={{width: '100%', maxWidth: 700, margin: 'auto'}}>
-              <Stepper linear={false} activeStep={stepIndex}>
+              <div>
+              <Stepper linear={false} activeStep={stepIndex} >
                 <Step>
-                  <StepButton onClick={() => this.setState({stepIndex: 0})}>
-                    Select campaign settings
+                  <StepButton >
+                    Контактная информация
                   </StepButton>
                 </Step>
                 <Step>
-                  <StepButton onClick={() => this.setState({stepIndex: 1})}>
-                    Create an ad group
+                  <StepButton >
+                    Рабочее время и зарплата
                   </StepButton>
                 </Step>
                 <Step>
-                  <StepButton onClick={() => this.setState({stepIndex: 2})}>
-                    Create an ad
+                  <StepButton >
+                    Дополнительная ставка
                   </StepButton>
                 </Step>
               </Stepper>
-              <div style={contentStyle}>
-                <p>{this.getStepContent(stepIndex)}</p>
-                <div style={{marginTop: 12}}>
-                  <FlatButton
-                    label="Back"
-                    disabled={stepIndex === 0}
-                    onTouchTap={this.handlePrev}
-                    style={{marginRight: 12}}
-                  />
-                  <RaisedButton
-                    label="Next"
-                    disabled={stepIndex === 2}
-                    primary
-                    onTouchTap={this.handleNext}
-                  />
-                </div>
-              </div>
-
-              <div className="divider divider-xl" />
-              <div className="callout callout-info">
-                <p>Non-linear steppers allow users to enter a multi-step flow at any point.</p>
+              <div style={styleHeight}>
+                {this.getStepContent(stepIndex)}
               </div>
             </div>
 

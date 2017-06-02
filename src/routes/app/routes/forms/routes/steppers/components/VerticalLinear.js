@@ -31,7 +31,7 @@ class VerticalLinearStepper extends React.Component {
   };
 
   renderStepActions(step) {
-    const {stepIndex} = this.state;
+    const {stepIndex} = this.props;
 
     return (
       <div style={{margin: '12px 0'}}>
@@ -57,7 +57,7 @@ class VerticalLinearStepper extends React.Component {
   }
 
   render() {
-    const {finished, stepIndex} = this.state;
+    const {finished, stepIndex} = this.props;
 
     return (
       <article className="article">
@@ -66,8 +66,7 @@ class VerticalLinearStepper extends React.Component {
 
             {/*<div style={{maxWidth: 380, height: 400, margin: 'auto'}}>*/}
             <div>
-              <Stepper activeStep={stepIndex} orientation="vertical" style={{display:'flex',flexDirection: 'row',
-                  justifyContent: 'flex-end'}}>
+              <Stepper activeStep={stepIndex} orientation="vertical" >
                 <Step>
                   <StepLabel>Select campaign settings</StepLabel>
                   <StepContent>

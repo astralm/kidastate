@@ -1,7 +1,7 @@
 import React from 'react';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
-import VerticalNonLinear from '../routes/forms/routes/steppers/components/VerticalNonLinear';
+import HonrizontalNonLinear from '../routes/forms/routes/steppers/components/HonrizontalNonLinear';
 
 
 
@@ -44,7 +44,7 @@ class FormSteps extends React.Component {
                 <div className="box box-transparent">
                     <div className="box-body">
                         <Dialog title="Создание нового сотрудника" actions={actions} modal={false} open={this.state.open} onRequestClose={this.handleClose}>
-                            <VerticalNonLinear stepIndex={this.state.stepIndex}/>
+                            <HonrizontalNonLinear stepIndex={this.state.stepIndex}/>
                         </Dialog>
                     </div>
                 </div>

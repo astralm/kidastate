@@ -10,10 +10,10 @@ import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
 import Checkbox from 'material-ui/Checkbox';
 
+import SliderExampleControlled  from 'routes/app/routes/forms/routes/elements/components/Slider';
 const styles = {
     checkbox: {
         maxWidth: 250
-
     }
 };
 class VerticalNonLinear extends React.Component {
@@ -101,7 +101,8 @@ class VerticalNonLinear extends React.Component {
                           hintText="Отдел"
                           floatingLabelText="Отдел"
                       />
-
+                    <br/>
+                    <SliderExampleControlled/>
 
                   </StepContent>
                 </Step>
