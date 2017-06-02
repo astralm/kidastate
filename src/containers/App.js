@@ -55,7 +55,7 @@ class App extends Component {
               'sidebar-sm': sidebarWidth === 'small',
               'sidebar-lg': sidebarWidth === 'large'})
                     }>
-            {this.props.userStatus ? this.props.children : <Login/>}
+            {this.props.userStatus ? this.props.children : this.props.children.props.location.pathname != '/forgot-password' ? <Login/> : this.props.children}
           </div>
         </div>
       </MuiThemeProvider>
