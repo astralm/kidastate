@@ -3,7 +3,6 @@ import Header from 'components/Header';
 import Sidenav from 'components/Sidenav';
 import Footer from 'components/Footer';
 import FormSteps from 'routes/app/components/FormSteps';
-import NewWorker from 'routes/app/routes/newworker';
 
 class MainApp extends React.Component {
   render() {
@@ -20,7 +19,7 @@ class MainApp extends React.Component {
             <div className="app-content">
               <div className="full-height">
                 <FormSteps />
-                <NewWorker />
+                {children}
               </div>
             </div>
             <Footer />
