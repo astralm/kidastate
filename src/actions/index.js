@@ -27,6 +27,9 @@ export function login(email, password) {
 export function logout(){
   return { type: types.LOGOUT };
 }
+export function forgotPassword(email){
+  return { type: types.FORGOT_PASSWORD, email };
+}
 export function updateUser(user){
 	return { type: types.UPDATE_USER, user };
 }
