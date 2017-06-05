@@ -1,14 +1,15 @@
 import * as types from 'constants/ActionTypes.js';
-export default channel => store => next => action => {
-	const state = store.getState().app,
-				mobile_hash = state.getIn(['user', 'mobile_hash']);
+export default socket => store => next => action => {
+	const state = store.getState().app
 	switch (action.type){
 		case types.LOGIN:
-			channel.push(mobile_hash, {
-				table: 'users',
-				operation: "db_sql_select",
-				sql: `select name,phone from users where email = '${action.email}' and password = '${action.password}'`,
-				uxui: types.LOGIN
+			socket.emit(types.LOGIN, {
+				email: action.email,
+				password: action.password
+			});
+		case types.FORGOT_PASSWORD:
+			socket.emit(types.FORGOT_PASSWORD, {
+				email: action.email
 			});
 		default: return next(action);
 	}
