@@ -57,7 +57,7 @@ class SelectFieldExampleNullable extends React.Component {
               value={this.state.value}
               onChange={this.handleChange}>
               <MenuItem value={null} primaryText="" />
-              {this.props.primarySts.map( (el, i) => <MenuItem key={i} value={el} primaryText={el} /> )}
+              {this.props.primarySts.map((el, i) => <MenuItem key={i} value={el} primaryText={el} /> )}
               {/*<MenuItem value={this.props.primarySt1} primaryText={this.props.primarySt1} />*/}
               {/*<MenuItem value={this.props.primarySt2} primaryText={this.props.primarySt2} />*/}
               {/*<MenuItem value={this.props.primarySt3} primaryText={this.props.primarySt3} />*/}

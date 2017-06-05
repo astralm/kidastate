@@ -35,11 +35,44 @@ const styleHeight = {
 
 
 class HorizontalNonLinearStepper extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            stepIndex: 0,
+            checkType: false,
+            check: [false, false, false, false, false, false, false],
+            check2: [false, false, false, false, false, false, false],
+        }
+        this.days = ['ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ', 'ВС'],
+        this.days2 = ['ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ', 'ВС'],
+        this.time = ['9-10', '10-11', '11-12', '12-13', '13-14', '14-15', '15-16']
+        this.time2 = ['9-10', '10-11', '11-12', '12-13', '13-14', '14-15', '15-16']
+    }
 
-  state = {
-    stepIndex: 0,
-  };
+    handleChange (id) {
+        this.setState( prev => {
+            let check = [...prev.check];
+            console.log(check);
+            check[id] = !check[id];
+            return {check}
+        })
+    }
+    handleChange2(id) {
+        this.setState( prev => {
+            let check = [...prev.check2];
+            console.log(check);
+            check[id] = !check[id];
+            return {check2: check}
 
+        })
+    }
+    // this.setState(prev => ({ checkType: !prev.checkType }))
+    // this.setState({ [e.target.name]: e.target.value });
+    // checkboxClick(e) {
+    //     this.setState({weekDay: e.target.label})
+    //     console.log(this.state.weekDay);
+    //     console.log(e.traget.label);
+    // }
   handleNext = () => {
     const {stepIndex} = this.state;
     if (stepIndex < 2) {
@@ -87,39 +120,17 @@ class HorizontalNonLinearStepper extends React.Component {
     _renderStep1() {
         return (
             <div style={styleHeight.heig}>
-              <p><b>Указать дни недели рабочие + часы работы в эти дни : </b></p>
-              <Checkbox
-                  label="ПНД"
-                  style={styles.checkbox}
-              /><br/>
-              <Checkbox
-                  label="ВТ"
-                  style={styles.checkbox}
-              /><br/>
-              <Checkbox
-                  label="СР"
-                  style={styles.checkbox}
-              /><br/>
-              <Checkbox
-                  label="ЧТ"
-                  style={styles.checkbox}
-              /><br/>
-              <Checkbox
-                  label="ПТ"
-                  style={styles.checkbox}
-              /><br/>
-              <Checkbox
-                  label="СБ"
-                  style={styles.checkbox}
-              /><br/>
-              <Checkbox
-                  label="ВС"
-                  style={styles.checkbox}
-              />
+                {this.days.map( (el, i) => (
+
+                <div key={i}><br/>
+                    <Checkbox onClick={() => this.handleChange(i)} label={el}   />
+                    <div>{this.state.check[i] ? this.time[i] : ''}</div>
+                </div>
+                ))}
               <SliderExampleControlled title="Указать оклад" min={0} max={100000} step={100} />
               <SliderExampleControlled title="Указать ставку в рублях за 1 час" min={10} max={1000} step={10}/>
 
-              <SelectFieldExampleNullable title="Ставка" primarySts={[18,20,36,40]}  />
+              <SelectFieldExampleNullable title="Ставка" primarySts={[18,20,36,40]}/>
             </div>
         )
     }
@@ -128,37 +139,15 @@ class HorizontalNonLinearStepper extends React.Component {
             <div style={styleHeight.heig}>
               <SelectFieldExampleNullable title="Должность" primarySts={['Должность1','Должность2']} />
               <p><b>Указать дни недели рабочие + часы работы в эти дни : </b></p>
-              <Checkbox
-                  label="ПНД"
-                  style={styles.checkbox}
-              /><br/>
-              <Checkbox
-                  label="ВТ"
-                  style={styles.checkbox}
-              /><br/>
-              <Checkbox
-                  label="СР"
-                  style={styles.checkbox}
-              /><br/>
-              <Checkbox
-                  label="ЧТ"
-                  style={styles.checkbox}
-              /><br/>
-              <Checkbox
-                  label="ПТ"
-                  style={styles.checkbox}
-              /><br/>
-              <Checkbox
-                  label="СБ"
-                  style={styles.checkbox}
-              /><br/>
-              <Checkbox
-                  label="ВС"
-                  style={styles.checkbox}
-              />
+                {this.days2.map( (el, i) => (
+                    <div key={i}><br/>
+                        <Checkbox onClick={() => this.handleChange2(i)} label={el}   />
+                        <div>{this.state.check2[i] ? this.time2[i] : ''}</div>
+                    </div>
+                ))}
               <SliderExampleControlled title="Указать оклад" min={0} max={100000} step={100} />
               <SliderExampleControlled title="Указать ставку в рублях за 1 час" min={10} max={1000} step={10}/>
-
+                <SelectFieldExampleNullable title="Ставка" primarySts={[18,20,36,40]}/>
             </div>
         )
     }
@@ -205,7 +194,6 @@ class HorizontalNonLinearStepper extends React.Component {
                 {this.getStepContent(stepIndex)}
               </div>
             </div>
-
           </div>
         </div>
       </article>
