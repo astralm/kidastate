@@ -2,6 +2,8 @@ import React from 'react';
 import APPCONFIG from 'constants/Config';
 import TextField from 'material-ui/TextField';
 import QueueAnim from 'rc-queue-anim';
+import { connect } from 'react-redux';
+import { forgotPassword } from '../../../actions/index.js';
 
 class ForgotPassowrd extends React.Component {
   constructor() {
@@ -9,8 +11,15 @@ class ForgotPassowrd extends React.Component {
     this.state = {
       brand: APPCONFIG.brand
     };
+    this.insertEmail = this.insertEmail.bind(this);
+    this.forgotPassword = this.forgotPassword.bind(this);
   }
-
+  insertEmail(event){
+    this.setState({email: event.target.value});
+  }
+  forgotPassword(){
+    this.props.forgotPassword(this.state.email);
+  }
   render() {
     return (
       <div className="body-inner">
@@ -23,6 +32,7 @@ class ForgotPassowrd extends React.Component {
               <fieldset>
                 <div className="form-group">
                   <TextField
+                    onInput = { this.insertEmail }
                     floatingLabelText="Email"
                     type="email"
                     fullWidth
@@ -35,7 +45,7 @@ class ForgotPassowrd extends React.Component {
             </form>
           </div>
           <div className="card-action no-border text-right">
-            <a href="#/" className="color-primary">Reset</a>
+            <a href="#/" className="color-primary" onClick = {this.forgotPassword}>Reset</a>
           </div>
         </div>
       </div>
@@ -43,12 +53,14 @@ class ForgotPassowrd extends React.Component {
   }
 }
 
+const ForgotPassowrdContainer = connect(null, Object({forgotPassword}))(ForgotPassowrd);
+
 const Page = () => (
   <div className="page-forgot">
     <div className="main-body">
       <QueueAnim type="bottom" className="ui-animate">
         <div key="1">
-          <ForgotPassowrd />
+          <ForgotPassowrdContainer />
         </div>
       </QueueAnim>
     </div>

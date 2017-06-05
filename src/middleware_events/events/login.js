@@ -1,6 +1,5 @@
 import { updateUser, logout } from '../../actions/index.js';
 export default (store, data) => {
-	data = JSON.parse(data);
 	if(data != null){
 		data[0].status = true;
 		store.dispatch(updateUser(data[0]));

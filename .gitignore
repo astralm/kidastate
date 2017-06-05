@@ -25,6 +25,7 @@ linters/
 /dll
 .tmp
 documentation/*.html
+src/env.js
 
 # misc
 .env

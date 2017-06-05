@@ -1,12 +1,13 @@
 import * as types from '../constants/ActionTypes.js';
 import login from './events/login.js';
+import forgot_password from './events/forgot_password.js';
 
-const initEventListeners = (channel, mobile_hash, store) => {
-	channel.on(mobile_hash, data => {
-		switch(data.uxui){
-			case types.LOGIN :
-				login(store, data.result);
-		}
+const initEventListeners = (socket, store) => {
+	socket.on(types.LOGIN, data => {
+		login(store, data);
+	});
+	socket.on(types.FORGOT_PASSWORD, data => {
+		forgot_password(store, data);
 	});
 }
 
