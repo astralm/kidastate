@@ -21,6 +21,7 @@ linters/
 /build
 /Release
 /dist
+/html
 /dll
 .tmp
 documentation/*.html
