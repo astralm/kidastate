@@ -7,10 +7,12 @@ export default socket => store => next => action => {
 				email: action.email,
 				password: action.password
 			});
+			break;
 		case types.FORGOT_PASSWORD:
 			socket.emit(types.FORGOT_PASSWORD, {
 				email: action.email
 			});
-		default: return next(action);
+			break;
 	}
+	return next(action);
 }
