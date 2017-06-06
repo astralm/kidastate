@@ -45,7 +45,7 @@ class ForgotPassowrd extends React.Component {
             </form>
           </div>
           <div className="card-action no-border text-right">
-            <a href="#/" className="color-primary" onClick = {this.forgotPassword}>Reset</a>
+            <a href="#/confirm-email" className="color-primary" onClick = {this.forgotPassword}>Reset</a>
           </div>
         </div>
       </div>
