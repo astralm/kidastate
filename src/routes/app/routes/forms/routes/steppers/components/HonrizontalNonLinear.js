@@ -43,6 +43,7 @@ class HorizontalNonLinearStepper extends React.Component {
             check: [false, false, false, false, false, false, false],
             check2: [false, false, false, false, false, false, false],
         }
+
         this.days = ['ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ', 'ВС'],
         this.days2 = ['ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ', 'ВС'],
         this.time = ['9-10', '10-11', '11-12', '12-13', '13-14', '14-15', '15-16']
@@ -147,7 +148,7 @@ class HorizontalNonLinearStepper extends React.Component {
                 ))}
               <SliderExampleControlled title="Указать оклад" min={0} max={100000} step={100} />
               <SliderExampleControlled title="Указать ставку в рублях за 1 час" min={10} max={1000} step={10}/>
-                <SelectFieldExampleNullable title="Ставка" primarySts={[18,20,36,40]}/>
+                ma<SelectFieldExampleNullable title="Ставка" primarySts={[18,20,36,40]}/>
             </div>
         )
     }
