@@ -8,7 +8,7 @@ import HonrizontalNonLinear from '../routes/forms/routes/steppers/components/Hon
 //
 class FormSteps extends React.Component {
     state = {
-        open: true,
+        open: false,
         stepIndex: 0,
     };
     handleNext = () => {
