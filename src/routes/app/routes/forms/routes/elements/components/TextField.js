@@ -22,10 +22,7 @@ const TextFieldExampleSimple = () => (
           id="text-field-default"
           defaultValue="Default Value"
         /><br />
-        <TextField
-          hintText="Hint Text"
-          floatingLabelText="Floating Label Text"
-        /><br />
+       <br />
         <TextField
           defaultValue="Default Value"
           floatingLabelText="Floating Label Text"

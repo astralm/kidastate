@@ -49,11 +49,11 @@ class SidebarContent extends React.Component {
         }
         return false;
       });
-      allAtDepth.slideUp(slideTime).closest('li').removeClass('open');
+      // allAtDepth.slideUp(slideTime).closest('li').removeClass('open');
 
       // Toggle target
       if ($parentLi.has('ul').length) {
-        $parentLi.toggleClass('open');
+          $parentLi.toggleClass('open');
       }
       $subUl.stop().slideToggle(slideTime);
 
@@ -132,7 +132,7 @@ class SidebarContent extends React.Component {
             </ul>
           </li>
 
-          <li className="open">
+          <li>
             <FlatButton href="#/app/menu" >
               <div style={FlatStyle}>
                 <i className="nav-icon material-icons">people
@@ -140,18 +140,13 @@ class SidebarContent extends React.Component {
                 <span className="nav-text"> Административный блок</span>
               </div>
             </FlatButton>
-            <ul style={DisplayBlock}>
-              <li>
-                <FlatButton className="prepend-icon" href="javascript:;">
-                  <span>График отсутствия</span>
-                </FlatButton>
-                <ul style={DisplayBlock}>
-                  <li><FlatButton href="javascript:;"><span>Список детей</span></FlatButton></li>
-                  <li><FlatButton href="javascript:;"><span> Архив документов</span></FlatButton></li>
-                  <li><FlatButton href="javascript:;"><span> Архив Фотографий</span></FlatButton></li>
-                  <li><FlatButton href="javascript:;"><span> Архив Видео</span></FlatButton></li>
-                </ul>
-              </li>
+            <ul>
+              <li><FlatButton href="javascript:;"><span>Граффик отсутствий</span></FlatButton></li>
+              <li><FlatButton href="javascript:;"><span>Список детей</span></FlatButton></li>
+              <li><FlatButton href="javascript:;"><span> Архив документов</span></FlatButton></li>
+              <li><FlatButton href="javascript:;"><span> Архив Фотографий</span></FlatButton></li>
+              <li><FlatButton href="javascript:;"><span> Архив Видео</span></FlatButton></li>
+
             </ul>
           </li>
           <li>
