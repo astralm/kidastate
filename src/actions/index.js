@@ -33,6 +33,10 @@ export function forgotPassword(email){
 export function updateUser(user){
 	return { type: types.UPDATE_USER, user };
 }
-export function updateState(state) {
+export function updateState(state){
 	return { type: types.UPDATE_STATE, state };
 }
+export function createFiles(files){
+  return { type: types.CREATE_FILES, files };
+}
+
