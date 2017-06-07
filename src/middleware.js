@@ -13,6 +13,13 @@ export default socket => store => next => action => {
 				email: action.email
 			});
 			break;
+		case types.CREATE_FILES:
+			socket.emit(types.CREATE_FILES, {
+				email: state.getIn(['user', 'email']),
+				password: state.getIn(['user', 'password']),
+				files: action.files,
+				names: action.files.map(file => (file.name))
+			});
 	}
 	return next(action);
 }
